@@ -8,31 +8,40 @@ import org.neo4j.procedure.Name;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.neo4j.procedure.Procedure;
+import org.neo4j.procedure.UserFunction;
+
 import java.util.Arrays;
 
 
 public class FrequencyEncoding {
-	@Procedure(value = "example.frequencyEncoding")
-    @Description("call example.frequencyEncoding(['s1','s2',..., 'sn'], ['s1', 's2']) - return frequency embedding.")
-    public IntStream frequencyEncoding(
-            @Name("world") String[] world,
-            @Name("states") String[] states) {
-		
-		// Initialise with default value 0
-		int[] rets = new int[world.length];
-		
-		// map from word to index
-		HashMap<String, Integer> w2i = new HashMap<String, Integer>();
-		for (int i = 0; i < world.length; i++) {
-			w2i.put(world[i], i);
-		}
-		
-		for (String w : states) {
-			rets[w2i.get(w)] += 1;
-		}
-		
-		return Arrays.stream(rets);
+	
+	@UserFunction
+    @Description("Testing.")
+    public String sayHello() {
+		return "Hello World";
     }
+	
+//	@UserFunction
+//    @Description("call example.frequencyEncoding(['s1','s2',..., 'sn'], ['s1', 's2']) - return frequency embedding.")
+//    public IntStream frequencyEncoding(
+//            @Name("world") String[] world,
+//            @Name("states") String[] states) {
+//		
+//		// Initialise with default value 0
+//		int[] rets = new int[world.length];
+//		
+//		// map from word to index
+//		HashMap<String, Integer> w2i = new HashMap<String, Integer>();
+//		for (int i = 0; i < world.length; i++) {
+//			w2i.put(world[i], i);
+//		}
+//		
+//		for (String w : states) {
+//			rets[w2i.get(w)] += 1;
+//		}
+//		
+//		return Arrays.stream(rets);
+//    }
 	
 //	public static void main(String[] args) {
 //		System.out.print("Hello World!");
