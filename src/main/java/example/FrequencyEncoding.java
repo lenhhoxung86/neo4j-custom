@@ -16,9 +16,16 @@ import java.util.Arrays;
 public class FrequencyEncoding {
 	
 	@UserFunction
-    @Description("Testing.")
+    @Description("Testing 1.")
     public String sayHello() {
 		return "Hello World";
+    }
+	
+	@UserFunction
+    @Description("Testing 2.")
+    public String[] sayDoubleHello() {
+		String[] greetings = {"Hello", "Hello"};
+		return greetings;
     }
 	
 //	@UserFunction
