@@ -21,11 +21,11 @@ public class FrequencyEncoding {
 		return "Hello World";
     }
 	
-	@UserFunction
+	@Procedure(value = "sayDoubleHello")
     @Description("Testing 2.")
-    public String[] sayDoubleHello() {
-		String[] greetings = {"Hello", "Hello"};
-		return greetings;
+    public Stream<int[]> sayDoubleHello() {
+		int[] greetings = {1, 2};
+		return Stream.of(greetings);
     }
 	
 //	@UserFunction
