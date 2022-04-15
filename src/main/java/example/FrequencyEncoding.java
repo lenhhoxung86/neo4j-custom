@@ -1,21 +1,24 @@
 package example;
 
-import java.util.List;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import org.neo4j.procedure.Description;
 import org.neo4j.procedure.Name;
-import org.neo4j.procedure.UserFunction;
+
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import org.neo4j.procedure.Procedure;
+import java.util.Arrays;
+
 
 public class FrequencyEncoding {
-	@UserFunction
-    @Description("example.frequencyEncoding(['s1','s2',..., 'sn'], ['s1', 's2']) - return frequency embedding.")
-    public int[] frequencyEncoding(
+	@Procedure(value = "example.frequencyEncoding")
+    @Description("call example.frequencyEncoding(['s1','s2',..., 'sn'], ['s1', 's2']) - return frequency embedding.")
+    public IntStream frequencyEncoding(
             @Name("world") String[] world,
             @Name("states") String[] states) {
 		
-		// initialize with default value 0
+		// Initialise with default value 0
 		int[] rets = new int[world.length];
 		
 		// map from word to index
@@ -28,17 +31,15 @@ public class FrequencyEncoding {
 			rets[w2i.get(w)] += 1;
 		}
 		
-		return rets;
+		return Arrays.stream(rets);
     }
 	
 //	public static void main(String[] args) {
 //		System.out.print("Hello World!");
 //		FrequencyEncoding obj = new FrequencyEncoding();
 //		String[] worlds = {"good", "bad", "avrage"};
-//		String[] states = {"good", "bad", "good"};
-//		System.out.print(
-//				Arrays.toString(obj.frequencyEncoding(worlds, states))
-//		);
+//		String[] states = {"bad", "bad", "good"};
+//		obj.frequencyEncoding(worlds, states).forEach(x -> System.out.print(x));
 //	}
 }
 
