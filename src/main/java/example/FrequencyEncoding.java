@@ -23,8 +23,8 @@ public class FrequencyEncoding {
 	
 	@Procedure(value = "example.sayDoubleHello")
     @Description("Testing 2.")
-    public Stream<int[]> sayDoubleHello() {
-		int[] greetings = {1, 2};
+    public Stream<Integer> sayDoubleHello() {
+		Integer[] greetings = {1, 2};
 		return Stream.of(greetings);
     }
 	
