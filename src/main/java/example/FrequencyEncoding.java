@@ -21,7 +21,7 @@ public class FrequencyEncoding {
 		return "Hello World";
     }
 	
-	@Procedure(value = "sayDoubleHello")
+	@Procedure(value = "example.sayDoubleHello")
     @Description("Testing 2.")
     public Stream<int[]> sayDoubleHello() {
 		int[] greetings = {1, 2};
